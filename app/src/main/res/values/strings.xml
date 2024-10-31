@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ExamateApp</string>
+
+    <string name="home">Home</string>
+    <string name="connector">Connector</string>
+    <string name="questions">Questions</string>
+    <string name="tools">Tools</string>
+    <string name="profile">Profile</string>
+</resources>
