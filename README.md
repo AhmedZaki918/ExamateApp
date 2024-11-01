@@ -2,6 +2,7 @@
 
 ## Table of contents
 * [General info](#general-info)
+* [Screenshots](#screenshots)
 * [Functionality](#functionality)
 * [Technologies](#technologies)
 * [Setup](#setup)
@@ -11,6 +12,11 @@
 
 Sample exam app to learn any language you want with variety by professional instructors, implemented with lastest technology on android
 Jetpack Compose [The modern ui toolkit for building native ui on android]
+
+## Screenshots
+
+<img src="images/1-home.jpg" width="250"> <img src="images/2-connect.jpg" width="250">
+<img src="images/3-questions.jpg" width="250">
 
 
 ## Functionality
