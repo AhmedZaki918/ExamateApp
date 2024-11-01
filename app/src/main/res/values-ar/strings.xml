@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ExamateApp</string>
+    <string name="home">الرئيسية</string>
+    <string name="connector">تواصل</string>
+    <string name="questions">الأسئلة</string>
+    <string name="tools">الأدوات</string>
+    <string name="profile">الحساب</string>
+    <string name="hi">هاى</string>
+    <string name="connect">تواصل</string>
+    <string name="study_plan">خطة المذاكرة</string>
+    <string name="suggested_plan">" شركاء المذاكرة المقترحين"</string>
+</resources>

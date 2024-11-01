@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">ExamateApp</string>
 
+    <!--  Bottom navigation  -->
     <string name="home">Home</string>
     <string name="connector">Connector</string>
+    <string name="connect">Connect</string>
     <string name="questions">Questions</string>
     <string name="tools">Tools</string>
     <string name="profile">Profile</string>
+
+    <!--  Home screen  -->
+    <string name="hi">Hi</string>
+    <string name="study_plan">Study Plan</string>
+    <string name="suggested_plan">Suggested Study Partners</string>
+
 </resources>
