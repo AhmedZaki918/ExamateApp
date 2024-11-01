@@ -1,4 +1,4 @@
-# Weather-App
+# Exam-App
 
 ## Table of contents
 * [General info](#general-info)
