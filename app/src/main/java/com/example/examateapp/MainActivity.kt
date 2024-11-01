@@ -1,6 +1,8 @@
 package com.example.examateapp
 
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.os.Build
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -17,8 +19,12 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource.Companion.SideEffect
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,6 +51,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             ExamateAppTheme {
+                ChangeSystemBarColor()
                 MainUi()
             }
         }
@@ -135,6 +142,16 @@ fun RowScope.AddItem(
             indicatorColor = Color.Transparent
         )
     )
+}
+
+@Composable
+fun ChangeSystemBarColor() {
+    val context = LocalContext.current
+    if (context is Activity) {
+        SideEffect {
+            context.window.navigationBarColor = OffWhite.toArgb()
+        }
+    }
 }
 
 
