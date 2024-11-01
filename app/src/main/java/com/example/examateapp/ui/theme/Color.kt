@@ -17,6 +17,8 @@ val TurquoiseLight = Color(0xFF7fefef)
 val TurquoiseZero = Color(0xFFeefdfd)
 val GrayMedium = Color(0xFFd1d5db)
 val GrayLight = Color(0xFFf3f4f6)
+val GrayHigh = Color(0xFF6b7280)
+
 
 
 
