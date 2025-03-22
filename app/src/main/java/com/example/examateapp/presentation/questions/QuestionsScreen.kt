@@ -25,6 +25,7 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
@@ -39,22 +40,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.examateapp.R
 import com.example.examateapp.data.local.Constants.BIG_MARGIN
 import com.example.examateapp.data.local.Constants.LARGE_MARGIN
 import com.example.examateapp.data.local.Constants.MEDIUM_MARGIN
 import com.example.examateapp.data.local.Constants.SMALL_MARGIN
 import com.example.examateapp.data.local.Constants.TINY_MARGIN
+import com.example.examateapp.data.model.Questions
 import com.example.examateapp.ui.theme.Turquoise
 import com.example.examateapp.ui.theme.TurquoiseBold
 import com.example.examateapp.ui.theme.TurquoiseLight
-import com.example.examateapp.util.questionsData
 import com.example.examateapp.util.tabItems
 import com.example.examateapp.util.tabQuestionsItems
 
 @Preview(showSystemUi = true)
 @Composable
-fun QuestionsScreen() {
+fun QuestionsScreen(viewModel: QuestionsViewModel = viewModel()) {
+    val uiState = viewModel.uiState.collectAsState().value
 
 
     ConstraintLayout(
@@ -109,18 +112,28 @@ fun QuestionsScreen() {
 
 
 
-        TabsContent(modifier = Modifier
-            .constrainAs(tabsColumn) {
-                top.linkTo(titleText.bottom)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
+        TabsContent(
+            questions = uiState.questions,
+            modifier = Modifier
+                .constrainAs(tabsColumn) {
+                    top.linkTo(titleText.bottom)
+                    start.linkTo(parent.start)
+                    end.linkTo(parent.end)
+                }
+                .padding(top = SMALL_MARGIN),
+            onItemWritingClicked = { id ->
+                viewModel.onIntent(QuestionIntent.ChooseItem(id))
             }
-            .padding(top = SMALL_MARGIN))
+        )
     }
 }
 
 @Composable
-fun TabsContent(modifier: Modifier) {
+fun TabsContent(
+    modifier: Modifier,
+    questions: List<Questions>,
+    onItemWritingClicked: (Byte) -> Unit
+) {
 
     Column(modifier = modifier) {
 
@@ -181,7 +194,12 @@ fun TabsContent(modifier: Modifier) {
             ) {
                 if (index == 0) {
                     FilterButton()
-                    Writing()
+                    Writing(
+                        questions = questions,
+                        onItemClicked = { id ->
+                            onItemWritingClicked(id)
+                        }
+                    )
                 }
             }
         }
@@ -189,15 +207,23 @@ fun TabsContent(modifier: Modifier) {
 }
 
 @Composable
-fun Writing() {
+fun Writing(
+    questions: List<Questions>,
+    onItemClicked: (Byte) -> Unit
+) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier
             .fillMaxSize()
             .padding(all = SMALL_MARGIN)
     ) {
-        items(questionsData()) {
-            ListItemQuestion(it)
+        items(questions) {
+            ListItemQuestion(
+                currentItem = it,
+                onItemClicked = { id ->
+                    onItemClicked(id)
+                }
+            )
         }
     }
 }

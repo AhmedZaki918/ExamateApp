@@ -1,6 +1,7 @@
 package com.example.examateapp.presentation.questions
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -34,16 +35,22 @@ import com.example.examateapp.ui.theme.TurquoiseBold
 import com.example.examateapp.ui.theme.TurquoiseLight
 
 @Composable
-fun ListItemQuestion(currentItem: Questions) {
+fun ListItemQuestion(
+    currentItem: Questions,
+    onItemClicked: (Byte) -> Unit
+) {
 
     Card(
         modifier = Modifier
             .wrapContentHeight()
             .fillMaxWidth()
-            .padding(horizontal = TINY_MARGIN, vertical = TINY_MARGIN),
+            .padding(horizontal = TINY_MARGIN, vertical = TINY_MARGIN)
+            .clickable{
+                onItemClicked(currentItem.id)
+            },
         colors = CardColors(
             contentColor = Color.Transparent,
-            containerColor = GrayMedium.copy(alpha = 0.3f),
+            containerColor = if(currentItem.isItemActive) GrayMedium.copy(alpha = 0.8f) else  GrayMedium.copy(alpha = 0.3f),
             disabledContentColor = Color.Transparent,
             disabledContainerColor = Color.Transparent
         )

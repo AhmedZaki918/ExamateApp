@@ -76,7 +76,8 @@ fun questionsData(): List<Questions> {
             R.drawable.ic_travel,
             "Voyage",
             0.3f,
-            "30"
+            "30",
+            1
         )
     )
 
@@ -86,7 +87,8 @@ fun questionsData(): List<Questions> {
             R.drawable.ic_travel,
             "Immigration",
             0.6f,
-            "60"
+            "60",
+            2
         )
     )
 
@@ -96,7 +98,8 @@ fun questionsData(): List<Questions> {
             R.drawable.ic_tech,
             "Technologies",
             0.2f,
-            "20"
+            "20",
+            3
         )
     )
 
@@ -106,7 +109,8 @@ fun questionsData(): List<Questions> {
             R.drawable.ic_art,
             "Art Culture",
             0.8f,
-            "80"
+            "80",
+            4
         )
     )
 
@@ -116,7 +120,8 @@ fun questionsData(): List<Questions> {
             R.drawable.ic_global,
             "Environment",
             0.4f,
-            "40"
+            "40",
+            5
         )
     )
 
@@ -126,7 +131,8 @@ fun questionsData(): List<Questions> {
             R.drawable.ic_travel,
             "Immigration",
             0.6f,
-            "60"
+            "60",
+            6
         )
     )
 

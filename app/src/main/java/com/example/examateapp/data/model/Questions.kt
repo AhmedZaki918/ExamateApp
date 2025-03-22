@@ -5,5 +5,7 @@ data class Questions(
     val icon: Int,
     val caption: String,
     val progressBar: Float,
-    val progressText: String
+    val progressText: String,
+    val id : Byte,
+    val isItemActive : Boolean = false
 )
